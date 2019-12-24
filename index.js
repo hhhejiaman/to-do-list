@@ -2,6 +2,8 @@ window.onload = function() {
     var userInfo = document.getElementById("user-info");
     var addBtn = document.getElementById("add-info");
     var addList = document.getElementById("add-list");
+    var liNow = document.getElementsByTagName("li");
+    var listCheck = document.getElementsByClassName("list-check");
     var html = "";
     userInfo.addEventListener("keydown", function(event) {
         if (event.keyCode == 13) {
@@ -24,7 +26,6 @@ window.onload = function() {
                 "hasCheck": false
             }
             storage.setItem(index, JSON.stringify(listThing));
-            console.log(storage)
             userInfo.value = "";
             html += `<li><input type="checkbox" class="list-check" check=${listThing.hasCheck}>${listThing.content}</li> `
             addList.innerHTML = html;
@@ -32,10 +33,7 @@ window.onload = function() {
 
     };
 
-    addList.addEventListener("click", function() {
-        var liNow = document.getElementsByTagName("li");
-        var listCheck = document.getElementsByClassName("list-check");
-        console.log(listCheck)
+    addList.addEventListener("click", function(event) {
         for (i = 0; i < liNow.length; i++) {
             if (listCheck[i].checked) {
                 listCheck[i].parentNode.style.textDecorationLine = "line-through";
@@ -44,25 +42,31 @@ window.onload = function() {
         }
     });
 
-
-
-
-
-
-    /*addInfo.onclick = function() {
-
-        if (userInfo.value != "") {
-            var li = document.createElement("li");
-            li.setAttribute("class", "list-row");
-            var html = "";
-            html += `<input type="checkbox" class="list-check">${userInfo.value}`
-            li.innerHTML = html;
-            addList.appendChild(li);
-            return false;
-        } else {
-            return false;
+    var allBtn = document.getElementById("all-btn");
+    allBtn.addEventListener("click", function() {
+        for (i = 0; i < liNow.length; i++) {
+            liNow[i].removeAttribute("hidden");
         }
+    })
 
-        alert("1");
-    }*/
+
+    var activeBtn = document.getElementById("active-btn");
+    activeBtn.addEventListener("click", function() {
+        for (i = 0; i < liNow.length; i++) {
+            if (listCheck[i].checked) {
+                var liHidden = listCheck[i].parentNode;
+                liHidden.setAttribute("hidden", true);
+            }
+        }
+    });
+
+    var completeBtn = document.getElementById("complete-btn");
+    completeBtn.addEventListener("click", function() {
+        for (i = 0; i < liNow.length; i++) {
+            if (listCheck[i].checked) {
+                var liHidden = listCheck[i].parentNode;
+                liHidden.setAttribute("hidden", true);
+            }
+        }
+    })
 }
