@@ -38,6 +38,9 @@ window.onload = function() {
             if (listCheck[i].checked) {
                 listCheck[i].parentNode.style.textDecorationLine = "line-through";
                 listCheck[i].parentNode.style.color = "grey";
+            } else {
+                listCheck[i].parentNode.style.textDecorationLine = "none";
+                listCheck[i].parentNode.style.color = "black";
             }
         }
     });
@@ -56,6 +59,9 @@ window.onload = function() {
             if (listCheck[i].checked) {
                 var liHidden = listCheck[i].parentNode;
                 liHidden.setAttribute("hidden", true);
+            } else if (!listCheck[i].checked) {
+                var liHiddenNow = listCheck[i].parentNode;
+                liHiddenNow.removeAttribute("hidden");
             }
         }
     });
@@ -65,7 +71,10 @@ window.onload = function() {
         for (i = 0; i < liNow.length; i++) {
             if (listCheck[i].checked) {
                 var liHidden = listCheck[i].parentNode;
-                liHidden.setAttribute("hidden", true);
+                liHidden.removeAttribute("hidden");
+            } else if (!listCheck[i].checked) {
+                var liHiddenNow = listCheck[i].parentNode;
+                liHiddenNow.setAttribute("hidden", true);
             }
         }
     })

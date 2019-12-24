@@ -11,18 +11,18 @@
 <body>
     <div class="list-card">
         <h3>TO DO LIST</h3>
-        <p>Simple Todo List with adding and filter by diff status.</p>
+        <p class="introduce">Simple Todo List with adding and filter by diff status.</p>
         <!-- <form action="#" method="get"> -->
         <input type="text" id="user-info" />
-        <button type="submit" id="add-info">add</button>
+        <button type="submit" id="add-info"><span id="add-btn">Add</span></button>
         <!-- </form> -->
         <div class="add-list-box">
             <ol id="add-list"></ol>
         </div>
-        <div>
-            <button id="all-btn">ALL</button>
-            <button id="active-btn">Active</button>
-            <button id="complete-btn">Complete</button>
+        <div class="footer">
+            <button id="all-btn" class="all-btn">ALL</button>
+            <button id="active-btn" class="all-btn">Active</button>
+            <button id="complete-btn" class="all-btn">Complete</button>
         </div>
     </div>
 </body>
